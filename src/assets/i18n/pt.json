@@ -1,0 +1,22 @@
+{
+    "Register user": "Cadastrar usuário",
+    "First Name": "Primeiro nome",
+    "Last name": "Nome completo",
+    "Registration successful": "Registrado com sucesso",
+    "Username": "Usuário",
+    "Password": "Senha",
+    "Register": "Cadastrar",
+    "Cancel": "Cancelar",
+    "Confirm": "Confirmar",
+    "Hi": "Olá",
+    "You re logged in with Angular 8!": "Você está logado com o Angular 8!",
+    "All registered users:": "Todos os usuários cadastrados:",
+    "Logout": "Sair",
+    "Home": "Início",
+    "Delete": "Excluir",
+    "Login": "Entrar",
+    "Delete user": "Excluír usuário",
+    "Enter": "Entrar",
+    "Verify the required fields": "Verifique os campos obrigatórios",
+    "Are you sure you want to exclude the user? This action cannot be undone.": "Tem certeza de que deseja excluir o usuário? Essa ação não pode ser desfeita."
+}

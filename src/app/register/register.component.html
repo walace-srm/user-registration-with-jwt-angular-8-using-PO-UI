@@ -1,0 +1,29 @@
+﻿<h2>{{'Register user' | translate}}</h2>
+<br>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    
+    <po-input
+        p-label="{{'First Name' | translate}}" formControlName="firstName">
+
+    </po-input>
+
+    <po-input
+        p-label="{{'Last name' | translate}}" formControlName="lastName">
+
+    </po-input>
+
+    <po-input
+        p-label="{{'Username' | translate}}" formControlName="username">
+
+    </po-input>
+
+    <po-password
+        p-label="{{'Password' | translate}}" formControlName="password">
+
+    </po-password>
+
+    <po-button p-label="{{'Register' | translate}}" p-type="primary" (click)="onSubmit()"></po-button>
+    <a routerLink="/login" class="btn btn-link">{{'Cancel' | translate}}</a>
+
+
+</form>

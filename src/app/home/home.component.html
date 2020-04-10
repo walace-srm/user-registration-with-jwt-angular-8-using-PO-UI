@@ -1,0 +1,18 @@
+﻿<h1>{{'Hi' | translate}} {{currentUser.firstName}}!</h1>
+<p>{{'You re logged in with Angular 8!' | translate}}</p>
+<h3>{{'All registered users:' | translate}}</h3>
+<ul>
+    <li *ngFor="let user of users">
+        {{user.username}} ({{user.firstName}} {{user.lastName}})
+         <a (click)="openDeleteModal(user)" class="text-danger">{{'Delete' | translate}}</a>
+    </li>
+</ul>
+<!-- <po-table [p-columns]="columns" [p-items]="item" [p-actions]="actions">
+</po-table> -->
+
+<po-modal
+  [p-title]="modalTitle"
+  [p-primary-action]="modalActions.primary"
+  [p-secondary-action]="modalActions.secondary">
+  {{modalText}}
+</po-modal>
