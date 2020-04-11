@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
             .pipe(first())
             .subscribe(() => this.loadAllUsers());
             this.poModal.close();
-            window.location.reload();
+           
     }
 
     private loadAllUsers() {
