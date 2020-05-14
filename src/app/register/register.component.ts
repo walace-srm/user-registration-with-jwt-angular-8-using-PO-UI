@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { markControlAsDirty } from 'src/libs/util';
 import { PoNotificationService, PoToasterOrientation } from '@po-ui/ng-components';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { SearchCepService } from '../_services/search-cep.service';
 
 //import { AlertService, UserService, AuthenticationService } from '@/_services';
 
@@ -23,7 +24,8 @@ export class RegisterComponent implements OnInit {
         private userService: UserService,
         private alertService: AlertService,
         private translateService: TranslateService,
-        private poNotificationService: PoNotificationService
+        private poNotificationService: PoNotificationService,
+        private searchCep: SearchCepService
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
@@ -37,8 +39,39 @@ export class RegisterComponent implements OnInit {
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            addres: this.formBuilder.group({
+                cep: [''],
+                number: [''],
+                complement: [''],
+                street: [''],
+                neighborhood: [''],
+                city: [''],
+                state: ['']
+            })
         });
+    }
+
+    loadDataForm(data) {
+        this.registerForm.patchValue({
+            addres: {
+                street: data.logradouro,
+                number: '',
+                complement: data.complement,
+                neighborhood: data.bairro,
+                city: data.localidade,
+                state: data.uf
+            }
+        });
+    }
+
+    fetchCep() {
+        let cep = this.registerForm.get('addres.cep').value;
+        if (cep != null && cep !== '') {
+            this.searchCep.getCep(cep).subscribe(data => {
+                this.loadDataForm(data)
+            });
+        }
     }
 
     //convenience getter for easy access to form fields
