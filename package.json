@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node ./server.js",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot --prod"
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +25,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "@po-ui/ng-components": "^2.0.0-beta.3",
     "@po-ui/ng-templates": "^2.0.0-beta.3",
+    "postbuild": "^2.1.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
