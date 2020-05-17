@@ -7,6 +7,7 @@ import { User } from '../_models';
 import { AuthenticationService, UserService } from '../_services';
 import { PoModalComponent, PoModalAction, PoTableColumn, PoTableAction } from '@po-ui/ng-components';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit {
@@ -36,36 +37,42 @@ export class HomeComponent implements OnInit {
 
       //SERÁ IMPLEMENTADO DEPOIS
 
-      // readonly columns: PoTableColumn[] = [
-      //   {
-      //     property: 'firstName',
-      //     label: this.translateService.instant('First Name'),
-      //     width: '30%'
-      //   },
-      //   {
-      //     property: 'lastName',
-      //     label: this.translateService.instant('Last name'),
-      //     width: '30%'
-      //   },
-      //   {
-      //     property: 'username',
-      //     label: this.translateService.instant('Username'),
-      //     width: '30%'
-      //   }
-      // ]
+      readonly columns: PoTableColumn[] = [
+        {
+          property: 'firstName',
+          label: this.translateService.instant('First Name'),
+          width: '30%'
+        },
+        {
+          property: 'lastName',
+          label: this.translateService.instant('Last name'),
+          width: '30%'
+        },
+        {
+          property: 'username',
+          label: this.translateService.instant('Username'),
+          width: '30%'
+        }
+      ]
 
-      // readonly actions: PoTableAction[] = [
-      //   {
-      //     action: (user: User) => this.openDeleteModal(user),
-      //     icon: 'po-icon po-icon-delete',
-      //     label: this.translateService.instant('Delete'),
-      //   }
-      // ]
+      readonly actions: PoTableAction[] = [
+        {
+          action: (user: User) => this.router.navigate(['/edit', user.id]),
+          icon: 'po-icon po-icon-edit',
+          label: this.translateService.instant('Edit'),
+        },
+        {
+          action: (user: User) => this.openDeleteModal(user),
+          icon: 'po-icon po-icon-delete',
+          label: this.translateService.instant('Delete'),
+        }
+      ]
 
     constructor(
         private authenticationService: AuthenticationService,
         private userService: UserService,
-        private translateService: TranslateService
+        private translateService: TranslateService,
+        private router: Router
     ) {
         this.currentUser = this.authenticationService.currentUserValue;
     }
@@ -86,7 +93,7 @@ export class HomeComponent implements OnInit {
             .pipe(first())
             .subscribe(() => this.loadAllUsers());
             this.poModal.close();
-           
+            window.location.reload();    
     }
 
     private loadAllUsers() {

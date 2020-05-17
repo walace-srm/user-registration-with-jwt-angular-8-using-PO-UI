@@ -22,37 +22,41 @@
         <br>
         <h6 class="po-ml-1">{{'Address' | translate}}</h6>
         <div formGroupName="addres">
-        <div>
-            <po-input p-label="CEP" class="po-md-6" (p-blur)="fetchCep()" formControlName="cep"></po-input>
-        </div>
 
-        <div>
-            <po-input p-label="Street" class="po-md-6" formControlName="street"></po-input>
-        </div>
+            <po-input p-label="CEP" 
+            class="po-md-6" (p-blur)="fetchCep()" formControlName="cep">
+            </po-input>
 
-        <div>
-            <po-input p-label="Number" class="po-md-6" formControlName="number"></po-input>
-        </div>
+            <po-input p-label="{{'Street' | translate}}" 
+            class="po-md-6" formControlName="street">
+            </po-input>
 
-        <div>
-            <po-input p-label="Neighborhood" class="po-md-6" formControlName="neighborhood"></po-input>
-        </div>
+            <po-input p-label="{{'Number' | translate}}" 
+            class="po-md-6" formControlName="number">
+            </po-input>
 
-        <div>
-            <po-input p-label="City" class="po-md-6" formControlName="city"></po-input>
-        </div>
+            <po-input p-label="{{'Neighborhood' | translate}}"
+             class="po-md-6" formControlName="neighborhood">
+            </po-input>
 
+            <po-input p-label="{{'City' | translate}}" 
+            class="po-md-6" formControlName="city">
+            </po-input>
         <div>
-            <po-input p-label="State" class="po-md-6" formControlName="state"></po-input>
+            <po-input p-label="{{'State' | translate}}"
+             class="po-md-6" formControlName="state">
+            </po-input>
         </div>
     </div>
-
         <div class="po-md-2">
-            <po-button p-label="{{'Register' | translate}}" p-type="primary" (click)="onSubmit()"></po-button>
+            <po-button p-label="{{'Register' | translate}}" 
+                p-type="primary"(click)="onSubmit()">
+            </po-button>
         </div>
         <div class="po-md-2">
-            <po-button routerLink="/login" p-label="{{'Cancel' | translate}}" p-type="secondary"></po-button>
+            <po-button routerLink="/login" p-label="{{'Cancel' | translate}}" 
+                p-type="secondary">
+            </po-button>
         </div>
     </div>
-
 </form>

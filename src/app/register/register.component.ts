@@ -1,13 +1,14 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { first, map, switchMap } from 'rxjs/operators';
 import { AuthenticationService, UserService, AlertService } from '../_services';
 import { TranslateService } from '@ngx-translate/core';
 import { markControlAsDirty } from 'src/libs/util';
 import { PoNotificationService, PoToasterOrientation } from '@po-ui/ng-components';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { SearchCepService } from '../_services/search-cep.service';
+import { User } from '../_models';
 
 //import { AlertService, UserService, AuthenticationService } from '@/_services';
 
@@ -22,15 +23,15 @@ export class RegisterComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService,
         private userService: UserService,
-        private alertService: AlertService,
         private translateService: TranslateService,
         private poNotificationService: PoNotificationService,
-        private searchCep: SearchCepService
+        private searchCep: SearchCepService,
+        private route: ActivatedRoute
     ) {
         // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) {
-            this.router.navigate(['/']);
-        }
+        // if (this.authenticationService.currentUserValue) {
+        //     this.router.navigate(['/']);
+        // }
 
     }
 
@@ -49,6 +50,24 @@ export class RegisterComponent implements OnInit {
                 city: [''],
                 state: ['']
             })
+        });
+
+        //PRECISO VERIFICAR LOOP NA TELA DE CADASTRO
+
+        // this.route.params.pipe(
+        //     map((params: User) => params['id']),
+        //     switchMap(id => this.userService.getById(id))).subscribe(user => this.updateForm(user));
+    }
+    
+
+    updateForm(user) {
+        this.registerForm.patchValue({
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            username: user.username,
+            //email: user.email,
+            password: user.password
         });
     }
 
