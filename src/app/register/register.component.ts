@@ -67,7 +67,13 @@ export class RegisterComponent implements OnInit {
             lastName: user.lastName,
             username: user.username,
             //email: user.email,
-            password: user.password
+            password: user.password,
+            cep: user.cep,
+            number: user.number,
+            street: user.logradouro,
+            neighborhood: user.bairro,
+            city: user.localidade,
+            state: user.uf
         });
     }
 
